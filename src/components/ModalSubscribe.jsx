@@ -24,7 +24,7 @@ export default function Modal({ isVisible, onClose }) {
     if (e.target.id === 'wrapper') onClose();
   };
 
-  useEffect(() => {
+  /* useEffect(() => {
     const phoneInput = intlTelInput(document.querySelector("#phone"), {
       initialCountry: "auto",
       geoIpLookup: function (success, failure) {
@@ -46,7 +46,7 @@ export default function Modal({ isVisible, onClose }) {
     });
 
     phoneInput.setNumber("+52 ");
-  }, []);
+  }, []); */
 
   const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
