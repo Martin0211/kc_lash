@@ -2,8 +2,8 @@
 import Image from 'next/image';
 import profilePic from '../components/profilePic.jpg';
 import { useState, useEffect } from 'react';
-import 'intl-tel-input/build/css/intlTelInput.css';
-import intlTelInput from 'intl-tel-input';
+/*import 'intl-tel-input/build/css/intlTelInput.css';
+import intlTelInput from 'intl-tel-input'; */
 import { IoClose } from "react-icons/io5";
 
 export default function Modal({ isVisible, onClose }) {
@@ -65,7 +65,7 @@ export default function Modal({ isVisible, onClose }) {
     const email = e.target.email.value;
     let phoneNumber = e.target.phoneNumber.value;
 
-/*     // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
+    /* // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
     const areaCode = '+52';
     if (phoneNumber === areaCode) {
       phoneNumber = '';
@@ -85,14 +85,25 @@ export default function Modal({ isVisible, onClose }) {
     }
 
     if (!isPhoneNumberValid) {
-      window.alert("Número de teléfono no válido");
+      window.alert("Número de teléfono no válido"); 
       return;
     } */
 
+    /* const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
+    
     const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
 
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
+        method: 'POST',
+        body: JSON.stringify({ names, surname, email, phoneNumber }),
+        headers: {
+          'next-action': 'RENDER'
+        }
+      });*/ 
+
+    try {
+      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phoneNumber }),
         headers: {

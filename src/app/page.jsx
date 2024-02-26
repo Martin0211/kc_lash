@@ -1,13 +1,13 @@
-import ButtonSubscribe from "../components/ButtonSubs"
-import ButtonShare from "../components/ButtonShare"
+import ButtonSubscribe from "../components/ButtonSubs.jsx"
+import ButtonShare from "../components/ButtonShare.jsx"
 import Image from 'next/image'
 import profilePic from '../components/profilePic.jpg'
 import salonPic from '../components/salonPic.jpg'
-import ButtonLocation from "@/components/Ubication"
-import Abaut from "@/components/Abaut"
-import BotonPersonalizado from '../components/BottonRedes';
-import IcomRedes from '../components/IconRedes';
-import VideoTiktok from '../components/TiktokVideo';
+import ButtonLocation from "@/components/Ubication.jsx"
+import Abaut from "@/components/Abaut.jsx"
+import BotonPersonalizado from '../components/BottonRedes.jsx';
+import IcomRedes from '../components/IconRedes.jsx';
+import VideoTiktok from '../components/TiktokVideo.jsx';
 import { BsWhatsapp, BsInstagram, BsTiktok, BsFacebook } from 'react-icons/bs';
 import { CgMail } from 'react-icons/cg';
 

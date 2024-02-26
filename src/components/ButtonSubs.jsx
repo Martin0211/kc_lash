@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { IoMdNotificationsOutline } from 'react-icons/io';
-import Modal from "./ModalSubscribe"
+import Modal from "./ModalSubscribe.jsx"
 
 export default function ButtonSubscribe({ isVisible }) {
     const [showModal, setShowModal] = useState(false);
