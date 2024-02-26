@@ -47,7 +47,7 @@ export default function Modal({ isVisible, onClose }) {
 
     phoneInput.setNumber("+52 ");
   }, []); */
-  
+
   /* const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
@@ -92,7 +92,7 @@ export default function Modal({ isVisible, onClose }) {
     const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
 
     try {
-      const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/subscribed/`, {
+      const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phoneNumber }),
         headers: {
