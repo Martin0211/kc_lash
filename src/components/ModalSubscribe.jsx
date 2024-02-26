@@ -24,7 +24,7 @@ export default function Modal({ isVisible, onClose }) {
     if (e.target.id === 'wrapper') onClose();
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const phoneInput = intlTelInput(document.querySelector("#phone"), {
       initialCountry: "auto",
       geoIpLookup: function (success, failure) {
@@ -46,9 +46,9 @@ export default function Modal({ isVisible, onClose }) {
     });
 
     phoneInput.setNumber("+52 ");
-  }, []); */
+  }, []);
 
-  const isValidEmail = (email) => {
+  /* const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -57,7 +57,7 @@ export default function Modal({ isVisible, onClose }) {
     const phoneRegex = /^(\+?[0-9]{1,15})?$/;
     const cleanedPhoneNumber = phoneNumber.replace(/[^\d+]/g, '');
     return phoneRegex.test(cleanedPhoneNumber);
-  };
+  }; */
 
   const onSubmit = async (e) => {
     const names = e.target.names.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
@@ -65,7 +65,7 @@ export default function Modal({ isVisible, onClose }) {
     const email = e.target.email.value;
     let phoneNumber = e.target.phoneNumber.value;
 
-    // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
+/*     // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
     const areaCode = '+52';
     if (phoneNumber === areaCode) {
       phoneNumber = '';
@@ -87,7 +87,7 @@ export default function Modal({ isVisible, onClose }) {
     if (!isPhoneNumberValid) {
       window.alert("Número de teléfono no válido");
       return;
-    }
+    } */
 
     const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
 
