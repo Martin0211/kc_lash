@@ -18,13 +18,13 @@ export async function POST(request) {
     const phone_number = body.phone_number;
     const email = body.email;
 
-    if (!names || !surname) {
+    /* if (!names || !surname) {
         return NextResponse.json({ error: 'Names and surname are required' }, { status: 400 });
     }
 
     if (!phone_number && !email) {
         return NextResponse.json({ error: 'At least one contact method (email or phone_number) is required' }, { status: 400 });
-    }
+    } */
 
     try {
         await sql`INSERT INTO subscribed (names, surname, phone_number, email) VALUES (${names}, ${surname}, ${phone_number}, ${email});`;
