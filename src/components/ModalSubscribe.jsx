@@ -89,7 +89,18 @@ export default function Modal({ isVisible, onClose }) {
       return;
     } */
 
-    /* const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000"; */ 
+    /* const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
+    
+    const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
+
+    try {
+      const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
+        method: 'POST',
+        body: JSON.stringify({ names, surname, email, phoneNumber }),
+        headers: {
+          'next-action': 'RENDER'
+        }
+      });*/ 
 
     try {
       const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
