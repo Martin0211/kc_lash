@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 /*import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input'; */
 import { IoClose } from "react-icons/io5";
+import { useEnv } from './hooks/useEnv'
 
 export default function Modal({ isVisible, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -89,32 +90,22 @@ export default function Modal({ isVisible, onClose }) {
       return;
     } */
 
-    /* const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
-    
-    const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
-
+    const { apiUrl } = useEnv();
+    const NEXT_PUBLIC_API_URL = apiUrl; // Assign the fetched URL to NEXT_PUBLIC_API_URL 
+    console.log(NEXT_PUBLIC_API_URL);
     try {
-      const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
-        method: 'POST',
-        body: JSON.stringify({ names, surname, email, phoneNumber }),
-        headers: {
-          'next-action': 'RENDER'
-        }
-      });*/ 
-
-    try {
-      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
+      const res = await fetch(`${NEXT_PUBLIC_API_URL}/api/subscribed/`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phoneNumber }),
         headers: {
           'next-action': 'RENDER'
         }
       });
-  
+
       if (!res.ok) {
         throw new Error(`El servidor respondió con el estado ${res.status}`);
       }
-  
+
       const data = await res.json();
       console.log(data);
       onClose();
@@ -176,8 +167,8 @@ export default function Modal({ isVisible, onClose }) {
                 <button className='w-[257px] md:w-[515px] h-[48px] py-[5px] mt-4 border-2 border-gray-800 rounded-3xl bg-gray-800 text-white' >Subscribe</button>
               </div>
               {errorMessage && (
-              <div className="error-message">{errorMessage}</div>
-            )}
+                <div className="error-message">{errorMessage}</div>
+              )}
             </form>
           </div>
         </div>
