@@ -17,7 +17,7 @@ export default async function VideoTiktok(){
         </Head>
         <main>
           <div dangerouslySetInnerHTML={{ __html: dataApi }} />
-          <Script className='bg-transparent' src="/script.js"></Script>
+          {/* <Script className='bg-transparent' src="/script.js"></Script> */}
         </main>
       </div>
         )
