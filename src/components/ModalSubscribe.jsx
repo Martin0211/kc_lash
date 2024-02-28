@@ -119,6 +119,7 @@ export default function Modal({ isVisible, onClose }) {
       const data = await res.json();
       console.log(data);
       onClose();
+      e.target.reset()
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage(error.message || 'Se produjo un error.'); // Proporciona un mensaje predeterminado
