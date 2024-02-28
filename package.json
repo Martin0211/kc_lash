@@ -2,7 +2,6 @@
   "name": "contac-page-kc-lashes",
   "version": "0.1.0",
   "private": true,
-  
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -18,7 +17,8 @@
     "react-dom": "^18",
     "react-icons": "^4.11.0",
     "react-tiktok-embed": "^1.0.0",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "sweetalert2": "^11.10.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",

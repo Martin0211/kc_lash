@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 /*import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input'; */
 import { IoClose } from "react-icons/io5";
+import Swal from 'sweetalert2'
 
 export default function Modal({ isVisible, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -117,7 +118,11 @@ export default function Modal({ isVisible, onClose }) {
       }
   
       const data = await res.json();
-      console.log(data);
+      Swal.fire({
+        title: "¡Gracias por suscribirte!",
+        text: "Prepárate para recibir contenido y ofertas que te encantará",
+        icon: "success"
+      });
       onClose();
       e.target.reset()
     } catch (error) {
