@@ -60,6 +60,7 @@ export default function Modal({ isVisible, onClose }) {
   }; */
 
   const onSubmit = async (e) => {
+    e.preventDefault()
     const names = e.target.names.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const surname = e.target.surname.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const email = e.target.email.value;
