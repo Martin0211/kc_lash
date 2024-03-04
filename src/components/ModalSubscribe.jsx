@@ -2,10 +2,11 @@
 import Image from 'next/image';
 import profilePic from '../components/profilePic.jpg';
 import { useState, useEffect } from 'react';
-/*import 'intl-tel-input/build/css/intlTelInput.css';
-import intlTelInput from 'intl-tel-input'; */
+import 'intl-tel-input/build/css/intlTelInput.css';
+import intlTelInput from 'intl-tel-input';
 import { IoClose } from "react-icons/io5";
 import Swal from 'sweetalert2'
+const VERCEL_URL = process.env.VERCEL_URL;
 
 export default function Modal({ isVisible, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function Modal({ isVisible, onClose }) {
     if (e.target.id === 'wrapper') onClose();
   };
 
-  /* useEffect(() => {
+  useEffect(() => {
     const phoneInput = intlTelInput(document.querySelector("#phone"), {
       initialCountry: "auto",
       geoIpLookup: function (success, failure) {
@@ -47,76 +48,101 @@ export default function Modal({ isVisible, onClose }) {
     });
 
     phoneInput.setNumber("+52 ");
-  }, []); */
+  }, []);
 
-  /* const isValidEmail = (email) => {
+  const isValidEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
 
-  const isValidPhoneNumber = (phoneNumber) => {
-    const phoneRegex = /^(\+?[0-9]{1,15})?$/;
-    const cleanedPhoneNumber = phoneNumber.replace(/[^\d+]/g, '');
+  const isValidPhoneNumber = (phone_number) => {
+    const cleanedPhoneNumber = phone_number.replace(/[^\d+]/g);
+    // Permite entre 7 y 15 dígitos.
+    const phoneRegex = /^(\+?[0-9]{7,15})?$/;
     return phoneRegex.test(cleanedPhoneNumber);
-  }; */
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault()
     const names = e.target.names.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const surname = e.target.surname.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const email = e.target.email.value;
-    let phoneNumber = e.target.phoneNumber.value;
+    let phone_number = e.target.phone_number.value;
 
-    /* // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
+    // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
     const areaCode = '+52';
-    if (phoneNumber === areaCode) {
-      phoneNumber = '';
-    } */
-
-    /* const isEmailValid = email.trim() === '' || isValidEmail(email);
-    const isPhoneNumberValid = phoneNumber.trim() === '' || isValidPhoneNumber(phoneNumber);
-
-    if (!isEmailValid && !isPhoneNumberValid) {
-      window.alert("Ingresa un correo electrónico válido o un número de teléfono válido");
-      return;
+    if (phone_number === areaCode) {
+      phone_number = '';
     }
 
-    if (!isEmailValid) {
-      window.alert("Correo electrónico no válido");
+    const isEmailValid = email.trim() === '' || isValidEmail(email);
+    const isPhoneNumberValid = phone_number.trim() === '' || isValidPhoneNumber(phone_number);
+
+    if (email && phone_number) {
+      if (!isEmailValid && !isPhoneNumberValid) {
+        Swal.fire({
+          title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+          text: "Ingresa un correo electrónico o un número de teléfono válido.",
+          icon: "error"
+        });
+        return;
+      } else if (!isEmailValid) {
+        Swal.fire({
+          title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+          text: "Ingresa un correo válido.",
+          icon: "error"
+        });
+        return;
+      } else if (!isPhoneNumberValid) {
+        Swal.fire({
+          title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+          text: "Ingresa un número de teléfono válido.",
+          icon: "error"
+        });
+        return;
+      }
+    }
+    if (email || phone_number) {
+      if (!isEmailValid && !phone_number) {
+        Swal.fire({
+          title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+          text: "ingresa un correo valido",
+          icon: "error"
+        });
+        return;
+      } else if (!isPhoneNumberValid && !email) {
+        Swal.fire({
+          title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+          text: "ingresa telefono valido",
+          icon: "error"
+        });
+        return;
+      }
+    } else if (!email && !phone_number) {
+      Swal.fire({
+        title: "¡Lo sentimos! Hay un problema con tu suscripción.",
+        text: "Ingresa un correo electrónico o un número de teléfono válido.",
+        icon: "error"
+      });
       return;
     }
-
-    if (!isPhoneNumberValid) {
-      window.alert("Número de teléfono no válido"); 
-      return;
-    } */
-
-    /* const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
     
-    const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000";
+    const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000/";
 
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
         method: 'POST',
-        body: JSON.stringify({ names, surname, email, phoneNumber }),
-        headers: {
-          'next-action': 'RENDER'
-        }
-      });*/ 
-
-    try {
-      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
-        method: 'POST',
-        body: JSON.stringify({ names, surname, email, phoneNumber }),
+        body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
           'next-action': 'RENDER'
         }
       });
-  
+
+
       if (!res.ok) {
         throw new Error(`El servidor respondió con el estado ${res.status}`);
       }
-  
+
       const data = await res.json();
       Swal.fire({
         title: "¡Gracias por suscribirte!",
@@ -176,15 +202,15 @@ export default function Modal({ isVisible, onClose }) {
                     className='bg-transparent text-black focus:outline-none w-[511px] h-[32px] pl-[16px]'
                     type="tel"
                     placeholder="Whatsapp"
-                    name="phoneNumber"
+                    name="phone_number"
                     id="phone"
                   />
                 </div>
                 <button className='w-[257px] md:w-[515px] h-[48px] py-[5px] mt-4 border-2 border-gray-800 rounded-3xl bg-gray-800 text-white' >Subscribe</button>
               </div>
               {errorMessage && (
-              <div className="error-message">{errorMessage}</div>
-            )}
+                <div className="error-message">{errorMessage}</div>
+              )}
             </form>
           </div>
         </div>
