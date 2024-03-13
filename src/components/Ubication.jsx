@@ -7,7 +7,7 @@ export default function ButtonLocation() {
       className='flex items-center mb-4 text-white'
       onClick={() => {
         window.open(
-          'https://www.google.com/maps/dir/?api=1&destination=20.630653531881272, -100.39967062154949',
+          'https://www.google.com/maps/dir/?api=1&destination=20.631646592133503, -100.399287734269',
           '_blank'
         );
       }}
