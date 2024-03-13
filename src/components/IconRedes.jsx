@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function IcomRedes({ icon: Icon, titulo, subtitulo, ruta }) {
+export default function IcomRedes({ icon: Icon, ruta }) {
 
     return (
         <Link href={ruta}>
