@@ -38,7 +38,7 @@ export default function Home() {
               <IcomRedes icon={BsInstagram} ruta="https://www.instagram.com/kclashes_mex/" />
               <IcomRedes icon={BsTiktok} ruta="https://www.tiktok.com/@kclashes_mex" />
               <IcomRedes icon={BsFacebook} ruta="https://www.facebook.com/kclashesmex" />
-              <IcomRedes icon={CgMail} ruta="https://api.whatsapp.com/message/YMBXIE727E2VB1?autoload=1&app_absent=0" />
+              <IcomRedes icon={CgMail} ruta="mailto:kclashes.mx@gmail.com?subject=Consulta%20desde%20el%20sitio%20web" />
             </div>
           </div>
 
