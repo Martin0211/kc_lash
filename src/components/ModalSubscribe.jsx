@@ -174,32 +174,32 @@ export default function Modal({ isVisible, onClose }) {
               <h2 className='text-black font-light text-center text-sm pb-3'> Sign up to get exclusive email updates directly from me. </h2>
             </div>
             <form onSubmit={onSubmit} method='POST'>
-              <div className='flex flex-col p-8 border-2 border-gray-800 rounded-3xl p-[24px]'>
+              <div className='flex flex-col p-8  border-2 border-gray-800 rounded-3xl p-[24px]'>
                 <div className='md:flex'>
-                  <div className='w-[257px] h-[48px] py-[5px] border-2 border-gray-800 rounded-3xl md:rounded-r-none md:rounded-l-3xl'>
-                    <input className='bg-transparent text-black focus:outline-none w-[511px] h-[32px] pl-[16px]'
+                  <div className='w-[257px] h-[48px] p-[5px] pl-[10px] md:pl-[15px] border-2 border-gray-800 rounded-3xl md:rounded-r-none md:rounded-l-3xl'>
+                    <input className='bg-transparent text-black focus:outline-none h-[32px] pl-[16px]'
                       type="text"
                       placeholder="Names"
                       name="names"
                     />
                   </div>
-                  <div className='w-[258px] h-[48px] py-[5px] mt-4 md:mt-0 border-2 md:border-l-0 md:border-t-2 md:border-r-2 md:border-b-2 border-gray-800  rounded-3xl md:rounded-l-none md:rounded-r-3xl'>
-                    <input className='bg-transparent text-black focus:outline-none w-[511px] h-[32px] pl-[16px]'
+                  <div className='w-[258px] h-[48px] p-[5px] pl-[10px] md:pl-0 mt-4 md:mt-0 border-2 md:border-l-0 md:border-t-2 md:border-r-2 md:border-b-2 border-gray-800  rounded-3xl md:rounded-l-none md:rounded-r-3xl'>
+                    <input className='bg-transparent text-black focus:outline-none h-[32px] pl-[16px]'
                       type="text"
                       placeholder="Surname"
                       name="surname"
                     />
                   </div>
                 </div>
-                <div className='w-[257px] md:w-[515px] h-[48px] py-[5px] mt-4 border-2 border-gray-800 rounded-3xl'>
-                  <input className='bg-transparent text-black focus:outline-none w-[511px] h-[32px] pl-[16px]'
+                <div className='w-[257px] md:w-[515px] h-[48px] p-[5px] pl-[10px] md:pl-[15px] mt-4 border-2 border-gray-800 rounded-3xl'>
+                  <input className='bg-transparent text-black focus:outline-none h-[32px] pl-[16px]'
                     type="text"
                     placeholder="Email"
                     name="email" />
                 </div>
-                <div className='w-[257px] md:w-[515px] h-[48px] py-[5px] mt-4 border-2 border-gray-800 rounded-3xl'>
+                <div className='w-[257px] md:w-[515px] h-[48px] p-[5px] pl-[10px] md:pl-[15px] mt-4 border-2 border-gray-800 rounded-3xl'>
                   <input
-                    className='bg-transparent text-black focus:outline-none w-[511px] h-[32px] pl-[16px]'
+                    className='bg-transparent text-black focus:outline-none h-[32px] w-[236px] pl-[16px]'
                     type="tel"
                     placeholder="Whatsapp"
                     name="phone_number"
