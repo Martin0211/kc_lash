@@ -79,7 +79,7 @@ export default function ModalEdit({ isVisible, onClose, subscriber, onEditSucces
       return;
     }
 
-    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
+    const NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
 
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed?id=${subscriber.id}`, {

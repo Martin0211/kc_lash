@@ -6,7 +6,6 @@ import 'intl-tel-input/build/css/intlTelInput.css';
 import intlTelInput from 'intl-tel-input';
 import { IoClose } from "react-icons/io5";
 import Swal from 'sweetalert2'
-const VERCEL_URL = process.env.VERCEL_URL;
 
 export default function Modal({ isVisible, onClose }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -129,7 +128,7 @@ export default function Modal({ isVisible, onClose }) {
       return;
     }
     
-    const NEXT_PUBLIC_API_URL = VERCEL_URL || "http://localhost:3000/";
+    const NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
 
     try {
       const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {

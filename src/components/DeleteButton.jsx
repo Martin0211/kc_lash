@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 
 const DeleteButton = ({ subscriberId, fetchSubscribed }) => {
   const handleEliminar = async () => {
-    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
+    const NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
 
     // Ensure there's a slash at the end of NEXT_PUBLIC_API_URL
     const apiUrl = NEXT_PUBLIC_API_URL.endsWith('/') ? NEXT_PUBLIC_API_URL : `${NEXT_PUBLIC_API_URL}/`;
