@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { IoMdNotificationsOutline } from 'react-icons/io';
 import Modal from "./ModalSubscribe.jsx"
 
-export default function ButtonSubscribe({ isVisible }) {
+export default function ButtonSubscribe({ label, className }) {
     const [showModal, setShowModal] = useState(false);
 
     
@@ -11,9 +11,9 @@ export default function ButtonSubscribe({ isVisible }) {
     return (
     <>
         <Modal isVisible = {showModal} onClose={() => setShowModal(false)}/>
-        <button className='flex items-center bg-slate-200 text-black rounded-full h-8 px-3 text-sm space-x-1' onClick={() => setShowModal(true)}>
+        <button className={`flex items-center ${className}`} onClick={() => setShowModal(true)}>
             <IoMdNotificationsOutline /> 
-            <span>subscribe</span>
+            <span>{ label }</span>
         </button>
     </>
     )
