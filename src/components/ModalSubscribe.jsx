@@ -56,18 +56,20 @@ export default function Modal({ isVisible, onClose }) {
   };
 
   const isValidPhoneNumber = (phone_number) => {
-    const cleanedPhoneNumber = phone_number.replace(/[^\d+]/g);
-    // Permite entre 7 y 15 dígitos.
-    const phoneRegex = /^(\+?[0-9]{7,15})?$/;
+    const cleanedPhoneNumber = phone_number.replace(/[^\d+]/g, '');
+    const phoneRegex = /^\+?\d{7,15}$/;
     return phoneRegex.test(cleanedPhoneNumber);
   };
 
   const onSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const names = e.target.names.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const surname = e.target.surname.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
     const email = e.target.email.value;
     let phone_number = e.target.phone_number.value;
+  
+    // Limpia el número de teléfono
+    phone_number = phone_number.replace(/[^\d+]/g, '');
 
     // Verifica si phoneNumber es igual al código de área predefinido y lo convierte en una cadena vacía
     const areaCode = '+52';
@@ -134,6 +136,7 @@ export default function Modal({ isVisible, onClose }) {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
+          'Content-Type': 'application/json',
           'next-action': 'RENDER'
         }
       });
