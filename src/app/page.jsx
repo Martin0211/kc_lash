@@ -19,7 +19,7 @@ export default function Home() {
         <div className="max-w-[600px] m-auto px-[20px] pb-24">
 
           <div className="flex justify-between py-4">
-            <ButtonSubscribe />
+            <ButtonSubscribe label="Suscríbete"  className="bg-slate-200 text-black rounded-full h-8 px-3 text-sm space-x-1" />
             <ButtonShare />
           </div>
 
