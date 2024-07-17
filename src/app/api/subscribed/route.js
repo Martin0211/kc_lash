@@ -8,7 +8,22 @@ const setNoCacheHeaders = (response) => {
   return response;
 };
 
-export async function GET(request) {
+// Función de middleware para CORS
+const allowCors = (handler) => async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
+
+  return await handler(req, res);
+};
+
+// GET handler
+export const GET = allowCors(async (request) => {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
 
@@ -20,9 +35,10 @@ export async function GET(request) {
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+});
 
-export async function POST(request) {
+// POST handler
+export const POST = allowCors(async (request) => {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
 
@@ -45,9 +61,10 @@ export async function POST(request) {
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+});
 
-export async function PUT(request) {
+// PUT handler
+export const PUT = allowCors(async (request) => {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
 
@@ -74,9 +91,10 @@ export async function PUT(request) {
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+});
 
-export async function DELETE(request) {
+// DELETE handler
+export const DELETE = allowCors(async (request) => {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
 
@@ -94,4 +112,4 @@ export async function DELETE(request) {
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+});
