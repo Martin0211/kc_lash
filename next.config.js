@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   env: {
-    VERCEL_URL: process.env.VERCEL_URL,
+    NEXT_PUBLIC_API_URL: process.env.VERCEL_URL || 'http://localhost:3000',
   },
 };
 
 module.exports = nextConfig;
-

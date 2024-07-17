@@ -128,7 +128,7 @@ export default function Modal({ isVisible, onClose }) {
       return;
     }
     
-    let NEXT_PUBLIC_API_URL = "https://kc-lash.vercel.app/" || "http://localhost:3000/";
+    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
     if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
       NEXT_PUBLIC_API_URL += '/';
     }
@@ -142,7 +142,6 @@ export default function Modal({ isVisible, onClose }) {
           'next-action': 'RENDER'
         }
       });
-
 
       if (!res.ok) {
         throw new Error(`El servidor respondió con el estado ${res.status}`);
