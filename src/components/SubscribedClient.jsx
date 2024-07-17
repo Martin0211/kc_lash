@@ -4,7 +4,7 @@
 import ButtonSubscribe from "@/components/ButtonSubs.jsx";
 import Botones from '@/components/ButtonsDelEdit'; */
 
-const SubscribedClient = (/* { subscribedData } */) => {
+const SubscribedClient = ({ subscribedData }) => {
   /* const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
 
   const fetchSubscribed = async () => {
