@@ -9,6 +9,9 @@ const setNoCacheHeaders = (response) => {
 };
 
 export async function GET(request) {
+  console.log('Request method:', request.method);
+  console.log('Request URL:', request.url);
+
   try {
     const { rows } = await sql`SELECT * FROM subscribed;`;
     let response = NextResponse.json({ subscribers: rows }, { status: 200 });
@@ -20,6 +23,9 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
+  console.log('Request method:', request.method);
+  console.log('Request URL:', request.url);
+
   const body = await request.json();
   const { names, surname, phone_number, email } = body;
 
@@ -42,6 +48,9 @@ export async function POST(request) {
 }
 
 export async function PUT(request) {
+  console.log('Request method:', request.method);
+  console.log('Request URL:', request.url);
+
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
   const body = await request.json();
@@ -68,6 +77,9 @@ export async function PUT(request) {
 }
 
 export async function DELETE(request) {
+  console.log('Request method:', request.method);
+  console.log('Request URL:', request.url);
+
   const url = new URL(request.url);
   const id = url.searchParams.get('id');
 
