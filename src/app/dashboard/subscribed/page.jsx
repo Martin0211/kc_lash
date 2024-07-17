@@ -20,6 +20,6 @@ export default async function SubscribedPage({ params }) {
   /* const subscribedData = await fetchSubscribed(); */
   
   return (
-    <SubscribedClient subscribedData={subscribedData} />
+    <SubscribedClient /* subscribedData={subscribedData} */ />
   );
 }
