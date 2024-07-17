@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-//import ButtonSubscribe from "@/components/ButtonSubs.jsx";
-//import Botones from '@/components/ButtonsDelEdit';
+/* import { useState, useEffect } from 'react';
+import ButtonSubscribe from "@/components/ButtonSubs.jsx";
+import Botones from '@/components/ButtonsDelEdit'; */
 
-const SubscribedClient = ({ subscribedData }) => {
-  const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
+const SubscribedClient = (/* { subscribedData } */) => {
+  /* const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
 
-  /* const fetchSubscribed = async () => {
+  const fetchSubscribed = async () => {
     let NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
     if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
       NEXT_PUBLIC_API_URL += '/';
@@ -20,30 +20,31 @@ const SubscribedClient = ({ subscribedData }) => {
       }
     });
     const data = await res.json();
-    setSubscribers(data.subscribers); 
+    setSubscribers(data.subscribers);
   };
 
   useEffect(() => {
     setSubscribers(subscribedData.subscribers);
   }, [subscribedData]);
-*/
+
   const handleEditSuccess = () => {
-   // fetchSubscribed();
-  };
+    fetchSubscribed();
+  }; */
 
   return (
     <>
-      <div className="flex items-center justify-between mx-12 my-6">
+    <h1>hola hola</h1>
+      {/* <div className="flex items-center justify-between mx-12 my-6">
         <strong className="text-2xl">Suscritos</strong>
-        {/* <ButtonSubscribe
+        <ButtonSubscribe
           label="Nuevo Suscriptor"
           className="md:mt-2 md:mb-1 md:h-48px p-2 rounded-lg md:rounded-md text-base flex items-center bg-gray-300 hover:text-gray-700"
-        /> */}
+        />
       </div>
       <div className="mt-6 flow-root">
         <div className="inline-block min-w-full align-middle">
           <div className="rounded-lg bg-gray-100 p-2 md:pt-0">
-            {/* <div className="md:hidden">
+            <div className="md:hidden">
               {subscribers.map(subscriber => (
                 <div key={subscriber.id} className="mb-2 w-full rounded-md bg-white p-4">
                   <div className="flex items-center justify-between border-b px-4 pb-4">
@@ -58,7 +59,7 @@ const SubscribedClient = ({ subscribedData }) => {
                   </div>
                 </div>
               ))}
-            </div> */}
+            </div>
             <table className="hidden min-w-full text-gray-900 md:table">
               <thead className="rounded-lg text-left text-sm font-normal">
                 <tr>
@@ -70,7 +71,7 @@ const SubscribedClient = ({ subscribedData }) => {
                 </tr>
               </thead>
               <tbody className="bg-white">
-                {/* {subscribers.map(subscriber => (
+                {subscribers.map(subscriber => (
                   <tr key={subscriber.id} className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.names}</td>
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.surname}</td>
@@ -80,12 +81,12 @@ const SubscribedClient = ({ subscribedData }) => {
                       <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} fetchSubscribed={fetchSubscribed} />
                     </td>
                   </tr>
-                ))} */}
+                ))}
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
