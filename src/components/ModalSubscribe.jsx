@@ -128,7 +128,7 @@ export default function Modal({ isVisible, onClose }) {
       return;
     }
     
-    const NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
+    let NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
     if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
       NEXT_PUBLIC_API_URL += '/';
     }
