@@ -128,7 +128,7 @@ export default function Modal({ isVisible, onClose }) {
       return;
     }
     
-    let NEXT_PUBLIC_API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/";
+    let NEXT_PUBLIC_API_URL = "https://kc-lash.vercel.app/"/*  || "http://localhost:3000/"; */
     if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
       NEXT_PUBLIC_API_URL += '/';
     }
@@ -178,7 +178,7 @@ export default function Modal({ isVisible, onClose }) {
               <h2 className='text-black font-light text-center text-sm pb-3'> Sign up to get exclusive email updates directly from me. </h2>
             </div>
             <form onSubmit={onSubmit} method='POST'>
-              <div className='flex flex-col p-8  border-2 border-gray-800 rounded-3xl p-[24px]'>
+              <div className='flex flex-col p-8  border-2 border-gray-800 rounded-3xl'>
                 <div className='md:flex'>
                   <div className='w-[257px] h-[48px] p-[5px] pl-[10px] md:pl-[15px] border-2 border-gray-800 rounded-3xl md:rounded-r-none md:rounded-l-3xl'>
                     <input className='bg-transparent text-black focus:outline-none h-[32px] pl-[16px]'
