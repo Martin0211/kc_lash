@@ -129,7 +129,9 @@ export default function Modal({ isVisible, onClose }) {
     }
     
     let NEXT_PUBLIC_API_URL = process.env.VERCEL_URL /* || "http://localhost:3000/" */;
-    if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
+    console.log(NEXT_PUBLIC_API_URL);
+    
+    if (typeof NEXT_PUBLIC_API_URL === 'string' && !NEXT_PUBLIC_API_URL.endsWith('/')) {
       NEXT_PUBLIC_API_URL += '/';
     }
 
