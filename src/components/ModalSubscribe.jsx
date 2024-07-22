@@ -136,7 +136,7 @@ export default function Modal({ isVisible, onClose }) {
     } */
 
     try {
-      const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
+      const res = await fetch(`${NEXT_PUBLIC_API_URL}//api/subscribed/`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
