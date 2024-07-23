@@ -127,6 +127,13 @@ export default function Modal({ isVisible, onClose }) {
       });
       return;
     }
+    
+    let apiUrl = process.env.NEXT_PUBLIC_API_URL /* || "http://localhost:3000/" */;
+    console.log(apiUrl);
+
+    /* if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
+      NEXT_PUBLIC_API_URL += '/';
+    } */
 
     try {
       const res = await fetch(`/api/subscribed/`, {
