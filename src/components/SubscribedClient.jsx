@@ -40,7 +40,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
                       <p className="text-sm text-gray-500">{subscriber.email}</p>
                       <p className="text-sm text-gray-500">{subscriber.phone_number}</p>
                     </div>
-                    <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} fetchSubscribed={fetchSubscribed} />
+                    <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} />
                   </div>
                 </div>
               ))}
@@ -63,7 +63,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.email}</td>
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.phone_number}</td>
                     <td className="acciones whitespace-nowrap py-3 pl-6 pr-3">
-                      <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} fetchSubscribed={fetchSubscribed} />
+                      <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} />
                     </td>
                   </tr>
                 ))}

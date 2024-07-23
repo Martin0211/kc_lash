@@ -5,7 +5,7 @@ import { IoMdCreate } from "react-icons/io";
 import ModalEdit from './ModalEdit';
 import DeleteButton from './DeleteButton';
 
-function Botones({ subscriber, onEditSuccess, fetchSubscribed }) {
+function Botones({ subscriber, onEditSuccess }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -19,7 +19,7 @@ function Botones({ subscriber, onEditSuccess, fetchSubscribed }) {
       <button onClick={() => setShowModal(true)}>
         <IoMdCreate size={25} />
       </button>
-      <DeleteButton subscriberId={subscriber.id} fetchSubscribed={fetchSubscribed} />
+      <DeleteButton subscriberId={subscriber.id} onDeleteSuccess={onEditSuccess} />
     </div>
   );
 }

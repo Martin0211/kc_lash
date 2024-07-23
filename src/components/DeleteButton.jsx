@@ -5,13 +5,8 @@ import Swal from 'sweetalert2';
 
 const DeleteButton = ({ subscriberId, fetchSubscribed }) => {
   const handleEliminar = async () => {
-    let NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
-    if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
-      NEXT_PUBLIC_API_URL += '/';
-    }
-
     try {
-      const res = await fetch(`${apiUrl}api/subscribed?id=${subscriberId}`, {
+      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed?id=${subscriberId}`, {
         method: 'DELETE'
       });
 
@@ -19,7 +14,7 @@ const DeleteButton = ({ subscriberId, fetchSubscribed }) => {
         throw new Error(`Error al eliminar usuario: ${res.status}`);
       }
 
-      await fetchSubscribed();
+      await onDeleteSuccess();
 
       Swal.fire({
         title: "Suscriptor eliminado",
