@@ -4,7 +4,7 @@ const fetchSubscribed = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
   
 
-  const res = await fetch(`${apiUrl}/api/subscribed/`, {
+  const res = await fetch(`https://${apiUrl}/api/subscribed/`, {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
