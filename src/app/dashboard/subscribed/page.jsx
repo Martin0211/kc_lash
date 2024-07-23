@@ -11,20 +11,24 @@ export default async function SubscribedPage({ params }) {
   const subscribedData = await fetchSubscribed();  // Espera a que fetchSubscribed() se resuelva
   return(
     <div>
-    {subscribedData.map(subscriber => (
-      <div key={subscriber.id} className="mb-2 w-full rounded-md bg-white p-4">
-        <div className="flex items-center justify-between border-b px-4 pb-4">
-          <div>
-            <div className="mb-2 flex items-center">
-              <p>{subscriber.names}</p>
+    {subscribedData.subscribers.length > 0 ? (
+      subscribedData.subscribers.map(subscriber => (
+        <div key={subscriber.id} className="mb-2 w-full rounded-md bg-white p-4">
+          <div className="flex items-center justify-between border-b px-4 pb-4">
+            <div>
+              <div className="mb-2 flex items-center">
+                <p>{subscriber.names} {subscriber.surname}</p>
+              </div>
+              <p className="text-sm text-gray-500">{subscriber.email}</p>
+              <p className="text-sm text-gray-500">{subscriber.phone_number}</p>
             </div>
-            <p className="text-sm text-gray-500">{subscriber.email}</p>
-            <p className="text-sm text-gray-500">{subscriber.phone_number}</p>
           </div>
         </div>
-      </div>
-    ))}
-    </div>
+      ))
+    ) : (
+      <p>No subscribers found.</p>
+    )}
+  </div>
    /* <SubscribedClient  subscribedData={subscribedData}  /> */ // Pasa los datos al componente como una prop
   );
 }
