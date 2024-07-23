@@ -1,7 +1,7 @@
-/* import SubscribedClient from "@/components/SubscribedClient" */
+import SubscribedClient from "@/components/SubscribedClient"
 
  const fetchSubscribed = async () => {
-  const res = await fetch(`../api/subscribed/`, {
+  const res = await fetch(`api/subscribed/`, {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
@@ -15,24 +15,8 @@
 export default async function SubscribedPage({ params }) {
   const subscribedData = await fetchSubscribed(); 
   
-  return (
-    <div>
-      {subscribedData.map(subscriber => (
-                <div key={subscriber.id} className="mb-2 w-full rounded-md bg-white p-4">
-                  <div className="flex items-center justify-between border-b px-4 pb-4">
-                    <div>
-                      <div className="mb-2 flex items-center">
-                        <p>{subscriber.names}</p>
-                      </div>
-                      <p className="text-sm text-gray-500">{subscriber.email}</p>
-                      <p className="text-sm text-gray-500">{subscriber.phone_number}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-    </div>
-    /* <SubscribedClient subscribedData={subscribedData}  /> */
-  );
+   <SubscribedClient /* subscribedData={subscribedData}  */ />
+  
 }
 
 /* import SubscribedClient from "@/components/SubscribedClient"
