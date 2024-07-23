@@ -1,14 +1,18 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+/* import { useState, useEffect } from 'react';
 import ButtonSubscribe from "@/components/ButtonSubs.jsx";
-import Botones from '@/components/ButtonsDelEdit';
+import Botones from '@/components/ButtonsDelEdit'; */
 
 const SubscribedClient = ({ subscribedData }) => {
-  const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
+  /* const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
 
   const fetchSubscribed = async () => {
-    const res = await fetch(`/api/subscribed/`, {
+    let NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
+    if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
+      NEXT_PUBLIC_API_URL += '/';
+    }
+    const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
       headers: {
         'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
         'Pragma': 'no-cache',
@@ -25,11 +29,12 @@ const SubscribedClient = ({ subscribedData }) => {
 
   const handleEditSuccess = () => {
     fetchSubscribed();
-  };
+  }; */
 
   return (
     <>
-    <div className="flex items-center justify-between mx-12 my-6">
+    <h1>hola hola</h1>
+      {/* <div className="flex items-center justify-between mx-12 my-6">
         <strong className="text-2xl">Suscritos</strong>
         <ButtonSubscribe
           label="Nuevo Suscriptor"
@@ -81,7 +86,7 @@ const SubscribedClient = ({ subscribedData }) => {
             </table>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
