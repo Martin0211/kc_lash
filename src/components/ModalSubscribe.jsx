@@ -130,10 +130,10 @@ export default function Modal({ isVisible, onClose }) {
     
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const apiPrueba = process.env.VERCEL_URL
-    console.log(apiPrueba);
+    console.log(apiPrueba, apiUrl);
 
     try {
-      const res = await fetch(`${apiUrl}/api/subscribed/`, {
+      const res = await fetch(`/api/subscribed/`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
