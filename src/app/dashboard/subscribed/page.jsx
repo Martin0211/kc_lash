@@ -1,22 +1,16 @@
 import SubscribedClient from "@/components/SubscribedClient"
 
  const fetchSubscribed = async () => {
-  const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
-    headers: {
-      'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
-      'Pragma': 'no-cache',
-      'Expires': '0'
-    }
-  });
-  console.log (res.json())
+  const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
+  console.log (res.json());
   return res.json();
 }; 
 
 export default async function SubscribedPage({ params }) {
   const subscribedData = await fetchSubscribed(); 
-  
+  return(
    <SubscribedClient /* subscribedData={subscribedData}  */ />
-  
+  )
 }
 
 /* import SubscribedClient from "@/components/SubscribedClient"
