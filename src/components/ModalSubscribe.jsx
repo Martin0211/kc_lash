@@ -128,7 +128,9 @@ export default function Modal({ isVisible, onClose }) {
       return;
     }
     
-    let apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const apiPrueba = process.env.VERCEL_URL
+    console.log(apiPrueba);
 
     try {
       const res = await fetch(`${apiUrl}/api/subscribed/`, {
