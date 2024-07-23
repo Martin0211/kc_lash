@@ -6,8 +6,8 @@ const fetchSubscribed = async () => {
   return data;  // Devuelve los datos
 };
 
-export default async function SubscribedPage({ params }) {
-  const subscribedData = await fetchSubscribed();  // Espera a que fetchSubscribed() se resuelva
+export default async function SubscribedPage() {
+  const subscribedData = await fetchSubscribed({next: { revalidate: 10 }});  // Espera a que fetchSubscribed() se resuelva
   return(
      <SubscribedClient  subscribedData={subscribedData}  />// Pasa los datos al componente como una prop
   );
