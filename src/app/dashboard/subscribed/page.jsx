@@ -3,9 +3,9 @@ import SubscribedClient from "@/components/SubscribedClient"
 const fetchSubscribed = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-  console.log(`Fetching from: ${apiUrl}api/subscribed/`);
+  console.log(`Fetching from: ${apiUrl}/api/subscribed/`);
 
-  const res = await fetch(`${apiUrl}api/subscribed/`, {
+  const res = await fetch(`${apiUrl}/api/subscribed/`, {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
