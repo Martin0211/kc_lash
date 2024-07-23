@@ -27,7 +27,6 @@ export default async function SubscribedPage({ params }) {
                       <p className="text-sm text-gray-500">{subscriber.email}</p>
                       <p className="text-sm text-gray-500">{subscriber.phone_number}</p>
                     </div>
-                    <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} fetchSubscribed={fetchSubscribed} />
                   </div>
                 </div>
               ))}
