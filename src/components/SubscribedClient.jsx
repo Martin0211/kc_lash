@@ -12,9 +12,14 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
   }, [subscribedData]);
 
   const handleEditSuccess = async () => {
-    const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
-    const data = await res.json();
-    setSubscribers(data.subscribers);
+    try {
+      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
+      if (!res.ok) throw new Error(`Error en la solicitud: ${res.status}`);
+      const data = await res.json();
+      setSubscribers(data.subscribers);
+    } catch (error) {
+      console.error('Error fetching subscribers:', error);
+    }
   };
 
   return (

@@ -79,8 +79,6 @@ export default function ModalEdit({ isVisible, onClose, subscriber, onEditSucces
       return;
     }
 
-    let apiUrl = process.env.NEXT_PUBLIC_API_URL
-
     try {
       const res = await fetch(`https://kc-lash.vercel.app/api/subscribed?id=${subscriber.id}`, {
         method: 'PUT',
