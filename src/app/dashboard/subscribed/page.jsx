@@ -1,7 +1,7 @@
 import SubscribedClient from "@/components/SubscribedClient"
 
  const fetchSubscribed = async () => {
-  const res = await fetch(`api/subscribed/`, {
+  const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`, {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
