@@ -1,16 +1,10 @@
 import SubscribedClient from "@/components/SubscribedClient"
 
-/* const fetchSubscribed = async () => {
-  let NEXT_PUBLIC_API_URL = process.env.VERCEL_URL || "http://localhost:3000/";
-  if (!/^https?:\/\//i.test(NEXT_PUBLIC_API_URL)) {
-    NEXT_PUBLIC_API_URL = 'https://' + NEXT_PUBLIC_API_URL;  // Asumiendo que Vercel usa HTTPS
-  }
+const fetchSubscribed = async () => {
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL
   
-  if (!NEXT_PUBLIC_API_URL.endsWith('/')) {
-      NEXT_PUBLIC_API_URL += '/';
-    }
 
-  const res = await fetch(`${NEXT_PUBLIC_API_URL}api/subscribed/`, {
+  const res = await fetch(`${apiUrl}/api/subscribed/`, {
     headers: {
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
@@ -18,10 +12,11 @@ import SubscribedClient from "@/components/SubscribedClient"
     }
   });
   return res.json();
-}; */
+};
 
 export default async function SubscribedPage({ params }) {
-  /* const subscribedData = await fetchSubscribed(); */
+  const subscribedData = await fetchSubscribed();
+  console.log(subscribedData);
   
   return (
     <SubscribedClient /* subscribedData={subscribedData} */ />
