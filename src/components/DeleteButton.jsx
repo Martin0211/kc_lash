@@ -3,7 +3,7 @@
 import { IoIosTrash } from "react-icons/io";
 import Swal from 'sweetalert2';
 
-const DeleteButton = ({ subscriberId, fetchSubscribed }) => {
+const DeleteButton = ({ subscriberId, onDeleteSuccess }) => {
   const handleEliminar = async () => {
     try {
       const res = await fetch(`https://kc-lash.vercel.app/api/subscribed?id=${subscriberId}`, {
