@@ -47,7 +47,7 @@ const Sidebar = () => {
         <strong>KC Lash</strong>
         </div>      
       </div>
-      {/* Contenido de la barra lateral */}
+      /* Contenido de la barra lateral */
       <div
         className={`${isOpen ? '' : 'hidden'
           } bg-white absolute flex justify-evenly px-4 py-3 border-b border-gray-200 w-full md:w:1/4 md:block md:h-screen md:snap-none `}
@@ -62,23 +62,6 @@ const Sidebar = () => {
             </Link>
           )
         })}
-        {/* <ul className="mt-4">
-          <li className="mb-2 md:bg-gray-300 p-2 md:rounded-md md:hover:bg-gray-700 md:hover:text-white">
-            <Link href="/dashboard" className="text-base flex items-center">
-             <IoIosHome/> &nbsp; Inicio
-            </Link>
-          </li>
-          <li className="mb-2 md:bg-gray-300 p-2 md:rounded-md md:hover:text-gray-700">
-            <Link href="/dashboard/subscribed" className={`text-base flex items-center ${pathname === href ? 'md:hover:bg-gray-700 md:hover:text-white' : ''}`}>
-            <IoIosPerson/> &nbsp; Suscriptores
-            </Link>
-          </li>
-          <li className="mb-2 md:bg-gray-300 p-2 md:rounded-md md:hover:text-gray-700">
-            <Link href="" className={`text-base flex items-center ${pathname === href ? 'md:hover:bg-gray-700 md:hover:text-white' : ''}`}>
-            <IoIosPaper/> &nbsp; Expedientes
-            </Link>
-          </li>
-        </ul> */}
       </div>
     </div>
   );
