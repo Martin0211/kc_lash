@@ -32,7 +32,7 @@ const Sidebar = () => {
   const pathname = usePathname()
   
   return (
-    <div className=" md:relative w-full md:h-screen md:overflow-hidden md:sticky md:top-0 md:left-0">
+    <div className="w-full md:h-screen md:overflow-hidden md:sticky md:top-0 md:left-0">
       <div className='bg-[#01121EBA] md:mx-4 rounded-b-lg flex items-center'>
         <button
           className=" top-0 p-2 md:hidden"
