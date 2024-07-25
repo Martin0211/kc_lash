@@ -47,7 +47,7 @@ const Sidebar = () => {
         <strong>KC Lash</strong>
         </div>      
       </div>
-      /* Contenido de la barra lateral */
+      {/* Contenido de la barra lateral */}
       <div
         className={`${isOpen ? '' : 'hidden'
           } bg-white absolute flex justify-evenly px-4 py-3 border-b border-gray-200 w-full md:w:1/4 md:block md:h-screen md:snap-none `}
