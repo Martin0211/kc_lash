@@ -12,7 +12,7 @@ export async function GET(request) {
   console.log('Request URL:', request.url);
 
   try {
-    const { rows } = await sql`SELECT * FROM subscribed;`;
+    const { rows } = await sql`SELECT * FROM subscribeds;`;
     let response = NextResponse.json({ subscribers: rows }, { status: 200 });
     response = setNoCacheHeaders(response);
     return response;
@@ -34,8 +34,8 @@ export async function POST(request) {
     return NextResponse.json({ error: 'At least one contact method (email or phone_number) is required' }, { status: 400 });
   }
   try {
-    await sql`INSERT INTO subscribed (names, surname, phone_number, email) VALUES (${names}, ${surname}, ${phone_number}, ${email});`;
-    const { rows } = await sql`SELECT * FROM subscribed ORDER BY id DESC LIMIT 1;`;
+    await sql`INSERT INTO subscribeds (names, surname, phone_number, email) VALUES (${names}, ${surname}, ${phone_number}, ${email});`;
+    const { rows } = await sql`SELECT * FROM subscribeds ORDER BY id DESC LIMIT 1;`;
     const response = NextResponse.json({ subscriber: rows[0] }, { status: 200 });
     return setNoCacheHeaders(response);
   } catch (error) {
@@ -56,7 +56,7 @@ export async function PUT(request) {
   }
   try {
     await sql`
-      UPDATE subscribed
+      UPDATE subscribeds
       SET names = ${names},
           surname = ${surname},
           phone_number = ${phone_number},
@@ -80,7 +80,7 @@ export async function DELETE(request) {
     return NextResponse.json({ error: 'ID is required' }, { status: 400 });
   }
   try {
-    await sql`DELETE FROM subscribed WHERE id = ${id}`;
+    await sql`DELETE FROM subscribeds WHERE id = ${id}`;
     const response = NextResponse.json({ message: 'Subscriber deleted successfully' }, { status: 200 });
     return setNoCacheHeaders(response);
   } catch (error) {
