@@ -1,5 +1,18 @@
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
+
+export async function GET(request) {
+  try {
+    // Eliminar la tabla si existe
+    await sql`DROP TABLE IF EXISTS subscribed;`;
+    return NextResponse.json({ message: 'Table dropped successfully' }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+}
+
+/* import { sql } from '@vercel/postgres';
+import { NextResponse } from 'next/server';
  
 export async function GET(request) {
   try {
@@ -15,4 +28,4 @@ export async function GET(request) {
   } catch (error) {
     return NextResponse.json({ error }, { status: 500 });
   }
-}
+} */
