@@ -1,4 +1,4 @@
-import SubscribedClient from "@/components/SubscribedClient";
+/* import SubscribedClient from "@/components/SubscribedClient"; */
 
 /* const fetchSubscribed = async () => {
   const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
@@ -9,7 +9,8 @@ import SubscribedClient from "@/components/SubscribedClient";
 export default async function SubscribedPage() {
   /* const subscribedData = await fetchSubscribed({next: { revalidate: 10 }});  */ // Espera a que fetchSubscribed() se resuelva
   return(
-     <SubscribedClient  /* subscribedData={subscribedData}  */ />// Pasa los datos al componente como una prop
+    <div>holaa</div>
+     /*<SubscribedClient  subscribedData={subscribedData}   /> */ // Pasa los datos al componente como una prop
   );
 }
 
