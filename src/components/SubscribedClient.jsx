@@ -7,7 +7,7 @@ import Botones from '@/components/ButtonsDelEdit';
 const SubscribedClient = ({/*  subscribedData  */}) => {
 const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
 
-  /* useEffect(() => {
+ useEffect(() => {
     setSubscribers(subscribedData.subscribers);
   }, [subscribedData]);
 
@@ -20,7 +20,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
     } catch (error) {
       console.error('Error fetching subscribers:', error);
     }
-  }; */
+  };
 
   return (
     <>
@@ -35,7 +35,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
         <div className="inline-block min-w-full align-middle">
           <div className="rounded-lg bg-gray-100 p-2 md:pt-0">
             <div className="md:hidden">
-             {/*  {subscribers.map(subscriber => (
+              {subscribers.map(subscriber => (
                 <div key={subscriber.id} className="mb-2 w-full rounded-md bg-white p-4">
                   <div className="flex items-center justify-between border-b px-4 pb-4">
                     <div>
@@ -48,7 +48,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
                     <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} />
                   </div>
                 </div>
-              ))} */}
+              ))}
             </div>
             <table className="hidden min-w-full text-gray-900 md:table">
               <thead className="rounded-lg text-left text-sm font-normal">
@@ -61,7 +61,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
                 </tr>
               </thead>
               <tbody className="bg-white">
-               {/*  {subscribers.map(subscriber => (
+               {subscribers.map(subscriber => (
                   <tr key={subscriber.id} className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg">
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.names}</td>
                     <td className="whitespace-nowrap py-3 pl-6 pr-3">{subscriber.surname}</td>
@@ -71,7 +71,7 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
                       <Botones subscriber={subscriber} onEditSuccess={handleEditSuccess} />
                     </td>
                   </tr>
-                ))} */}
+                ))}
               </tbody>
             </table>
           </div>
