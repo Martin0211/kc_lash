@@ -1,8 +1,8 @@
 import SubscribedClient from "@/components/SubscribedClient";
 
 const fetchSubscribed = async () => {
-  const apiUrl = process.env.VERCEL_URL 
-    ? `https://${process.env.VERCEL_URL}/api/subscribed/`
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL 
+    ? `https://${process.env.NEXT_PUBLIC_API_URL}/api/subscribed/`
     : 'http://localhost:3000/api/subscribed/';
 
   try {
