@@ -1,9 +1,13 @@
 import SubscribedClient from "@/components/SubscribedClient";
 
 const fetchSubscribed = async () => {
-  const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
-  const data = await res.json();  // Espera a que res.json() se resuelva y almacena el resultado en una variable
-  return data;  // Devuelve los datos
+  const apiUrl = process.env.VERCEL_URL 
+    ? `https://${process.env.VERCEL_URL}/api/subscribed/`
+    : 'http://localhost:3000/api/subscribed/';
+
+  const res = await fetch(apiUrl);
+  const data = await res.json();
+  return data;
 }; 
 
 export default async function SubscribedPage() {
