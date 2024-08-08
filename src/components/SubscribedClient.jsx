@@ -5,6 +5,7 @@ import ButtonSubscribe from "@/components/ButtonSubs.jsx";
 import Botones from '@/components/ButtonsDelEdit';
 
 const SubscribedClient = ({ subscribedData }) => {
+  console.log(subscribedData);
 const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
 
  useEffect(() => {

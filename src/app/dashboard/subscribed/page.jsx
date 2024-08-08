@@ -2,13 +2,16 @@ import SubscribedClient from "@/components/SubscribedClient";
 
 const fetchSubscribed = async () => {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL 
-    ? `https://${process.env.NEXT_PUBLIC_API_URL}/api/subscribed/`
-    : 'http://localhost:3000/api/subscribed/';
 
   try {
-    console.log(`Fetching from: ${apiUrl}`); // Para depuración
-
-    const res = await fetch(apiUrl, { next: { revalidate: 10 } });
+    const res = await fetch(`${apiUrl}/api/subscribed`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      next: { revalidate: 10}
+    }); // Para depuración
     
     if (!res.ok) {
       throw new Error(`HTTP error! status: ${res.status}`);
@@ -36,6 +39,7 @@ const fetchSubscribed = async () => {
 export default async function SubscribedPage() {
   try {
     const subscribedData = await fetchSubscribed();
+    console.log(subscribedData);
     return <SubscribedClient subscribedData={subscribedData} />;
   } catch (error) {
     console.error('Error in SubscribedPage:', error);
