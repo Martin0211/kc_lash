@@ -5,16 +5,43 @@ const fetchSubscribed = async () => {
     ? `https://${process.env.VERCEL_URL}/api/subscribed/`
     : 'http://localhost:3000/api/subscribed/';
 
-  const res = await fetch(apiUrl);
-  const data = await res.json();
-  return data;
-}; 
+  try {
+    console.log(`Fetching from: ${apiUrl}`); // Para depuración
+
+    const res = await fetch(apiUrl, { next: { revalidate: 10 } });
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const contentType = res.headers.get("content-type");
+    if (!contentType || !contentType.includes("application/json")) {
+      throw new Error(`Unexpected content type: ${contentType}`);
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching subscribers:', error);
+    
+    if (error.message.includes('Unexpected token')) {
+      console.error('Received non-JSON response. This might be an HTML error page.');
+    }
+
+    // Retorna un valor por defecto en caso de error
+    return { subscribers: [] };
+  }
+};
 
 export default async function SubscribedPage() {
-  const subscribedData = await fetchSubscribed({next: { revalidate: 10 }});// Espera a que fetchSubscribed() se resuelva
-  return(
-     <SubscribedClient  subscribedData={subscribedData}   /> // Pasa los datos al componente como una prop
-  );
+  try {
+    const subscribedData = await fetchSubscribed();
+    return <SubscribedClient subscribedData={subscribedData} />;
+  } catch (error) {
+    console.error('Error in SubscribedPage:', error);
+    // Puedes renderizar un componente de error aquí si lo prefieres
+    return <div>Error loading subscribers. Please try again later.</div>;
+  }
 }
 
 /* import SubscribedClient from "@/components/SubscribedClient"
