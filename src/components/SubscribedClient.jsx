@@ -12,16 +12,28 @@ const [subscribers, setSubscribers] = useState(subscribedData.subscribers);
   }, [subscribedData]);
 
   const handleEditSuccess = async () => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    console.log(`API URL being used: ${apiUrl}/api/subscribed`);
+
     try {
-      const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
-      if (!res.ok) throw new Error(`Error en la solicitud: ${res.status}`);
+      const res = await fetch(`${apiUrl}/api/subscribed`, {
+        method: 'GET',  // Cambiado a GET ya que estamos obteniendo datos
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      });
+
+      if (!res.ok) {
+        throw new Error(`Error en la solicitud: ${res.status}`);
+      }
+
       const data = await res.json();
       setSubscribers(data.subscribers);
     } catch (error) {
       console.error('Error fetching subscribers:', error);
     }
   };
-
   return (
     <>
     <div className="flex items-center justify-between mx-12 my-6">
