@@ -129,23 +129,21 @@ export default function Modal({ isVisible, onClose }) {
     }
     
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    const apiPrueba = process.env.VERCEL_URL
-    console.log(apiPrueba, apiUrl);
+    console.log(`API URL being used: ${apiUrl}/api/subscribed`);
 
     try {
-      const res = await fetch(`/api/subscribed/`, {
+      const res = await fetch(`${apiUrl}/api/subscribed`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
           'Content-Type': 'application/json',
-          'next-action': 'RENDER'
-        }
+        },
+        credentials: 'include',
       });
 
       if (!res.ok) {
         throw new Error(`El servidor respondió con el estado ${res.status}`);
       }
-
       const data = await res.json();
       Swal.fire({
         title: "¡Gracias por suscribirte!",
@@ -156,7 +154,8 @@ export default function Modal({ isVisible, onClose }) {
       e.target.reset()
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage(error.message || 'Se produjo un error.'); // Proporciona un mensaje predeterminado
+      console.error('Error details:', error.response ? await error.response.text() : 'No response');
+      setErrorMessage(error.message || 'Se produjo un error.');
     }
   };
 

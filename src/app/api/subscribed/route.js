@@ -7,25 +7,36 @@ const setNoCacheHeaders = (response) => {
   return response;
 };
 
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders });
+}
+
 export async function GET(request) {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
 
   try {
     const { rows } = await sql`SELECT * FROM subscribeds;`;
-    let response = NextResponse.json({ subscribers: rows }, { status: 200 });
-    response = setNoCacheHeaders(response);
-    return response;
+    return NextResponse.json({ subscribers: rows }, { 
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 export async function POST(request) {
-  console.log('Request method:', request.method);
-  console.log('Request URL:', request.url);
-
+  console.log('POST request received');
+  console.log('Request headers:', Object.fromEntries(request.headers));
   const body = await request.json();
+  console.log('Request body:', body);
+
   const { names, surname, phone_number, email } = body;
   if (!names || !surname) {
     return NextResponse.json({ error: 'Names and surname are required' }, { status: 400 });
@@ -36,10 +47,17 @@ export async function POST(request) {
   try {
     await sql`INSERT INTO subscribeds (names, surname, phone_number, email) VALUES (${names}, ${surname}, ${phone_number}, ${email});`;
     const { rows } = await sql`SELECT * FROM subscribeds ORDER BY id DESC LIMIT 1;`;
-    const response = NextResponse.json({ subscriber: rows[0] }, { status: 200 });
-    return setNoCacheHeaders(response);
+    return NextResponse.json({ subscriber: rows[0] }, { 
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
@@ -63,10 +81,20 @@ export async function PUT(request) {
           email = ${email}
       WHERE id = ${id};
     `;
-    const response = NextResponse.json({ message: 'Subscriber updated successfully' }, { status: 200 });
-    return setNoCacheHeaders(response);
+    return NextResponse.json({ message: 'Subscriber updated successfully' }, { 
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
@@ -81,10 +109,20 @@ export async function DELETE(request) {
   }
   try {
     await sql`DELETE FROM subscribeds WHERE id = ${id}`;
-    const response = NextResponse.json({ message: 'Subscriber deleted successfully' }, { status: 200 });
-    return setNoCacheHeaders(response);
+    return NextResponse.json({ message: 'Subscriber deleted successfully' }, { 
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0',
+      },
+    });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 /* import { sql } from '@vercel/postgres';

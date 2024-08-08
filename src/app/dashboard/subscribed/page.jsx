@@ -4,12 +4,12 @@ const fetchSubscribed = async () => {
   const res = await fetch(`https://kc-lash.vercel.app/api/subscribed/`);
   const data = await res.json();  // Espera a que res.json() se resuelva y almacena el resultado en una variable
   return data;  // Devuelve los datos
-};
+}; 
 
 export default async function SubscribedPage() {
-  const subscribedData = await fetchSubscribed({next: { revalidate: 10 }});  // Espera a que fetchSubscribed() se resuelva
+  const subscribedData = await fetchSubscribed({next: { revalidate: 10 }});// Espera a que fetchSubscribed() se resuelva
   return(
-     <SubscribedClient  subscribedData={subscribedData}  />// Pasa los datos al componente como una prop
+     <SubscribedClient  subscribedData={subscribedData}   /> // Pasa los datos al componente como una prop
   );
 }
 
