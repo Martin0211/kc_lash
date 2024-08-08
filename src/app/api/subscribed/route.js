@@ -7,6 +7,10 @@ const setNoCacheHeaders = (response) => {
   return response;
 };
 
+export async function OPTIONS() {
+  return NextResponse.json({}, { headers: corsHeaders });
+}
+
 export async function GET(request) {
   console.log('Request method:', request.method);
   console.log('Request URL:', request.url);
@@ -22,15 +26,17 @@ export async function GET(request) {
       },
     });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
 export async function POST(request) {
-  console.log('Request method:', request.method);
-  console.log('Request URL:', request.url);
-
+  console.log('POST request received');
+  console.log('Request headers:', Object.fromEntries(request.headers));
   const body = await request.json();
+  console.log('Request body:', body);
+
   const { names, surname, phone_number, email } = body;
   if (!names || !surname) {
     return NextResponse.json({ error: 'Names and surname are required' }, { status: 400 });
@@ -50,7 +56,8 @@ export async function POST(request) {
       },
     });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
@@ -86,7 +93,8 @@ export async function PUT(request) {
       },
     });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 
@@ -113,7 +121,8 @@ export async function DELETE(request) {
       },
     });
   } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
+    console.error('Error details:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
 /* import { sql } from '@vercel/postgres';

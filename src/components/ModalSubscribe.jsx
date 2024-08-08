@@ -130,7 +130,7 @@ export default function Modal({ isVisible, onClose }) {
     
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
     const apiPrueba = process.env.VERCEL_URL
-    console.log(apiPrueba, apiUrl);
+    console.log(apiPrueba, 'API URL being used:', `${apiUrl}/api/subscribed`);
 
     try {
       const res = await fetch(`${apiUrl}/api/subscribed`, {
@@ -138,7 +138,8 @@ export default function Modal({ isVisible, onClose }) {
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
+        credentials: 'include',
       });
 
       if (!res.ok) {
@@ -154,7 +155,8 @@ export default function Modal({ isVisible, onClose }) {
       e.target.reset()
     } catch (error) {
       console.error('Error:', error);
-      setErrorMessage(error.message || 'Se produjo un error.'); // Proporciona un mensaje predeterminado
+      console.error('Error details:', error.response ? await error.response.text() : 'No response');
+      setErrorMessage(error.message || 'Se produjo un error.');
     }
   };
 
