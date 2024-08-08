@@ -133,19 +133,17 @@ export default function Modal({ isVisible, onClose }) {
     console.log(apiPrueba, apiUrl);
 
     try {
-      const res = await fetch(`/api/subscribed/`, {
+      const res = await fetch(`${apiUrl}/api/subscribed`, {
         method: 'POST',
         body: JSON.stringify({ names, surname, email, phone_number }),
         headers: {
           'Content-Type': 'application/json',
-          'next-action': 'RENDER'
         }
       });
 
       if (!res.ok) {
         throw new Error(`El servidor respondió con el estado ${res.status}`);
       }
-
       const data = await res.json();
       Swal.fire({
         title: "¡Gracias por suscribirte!",
